@@ -1,21 +1,17 @@
 
 import './App.css'
-import image from './assets/image-1.jpg'
-import image2 from './assets/image-2.jpg'
-import image3 from './assets/image-3.jpg'
-import image4 from "./assets/image-4.jpg";
+import { image, image2, image3, image4 } from "./assets/expors";
 import { useState } from 'react'
-import {motion, AnimatePresence } from "framer-motion"
+import {motion } from "framer-motion"
 
 function App() {
    const images = [image, image2, image3, image4];
-   const [currentImage, setCurrentImage] = useState(images[0]);
    const [active, setActive] = useState(0);
    const changeActive = (image) => {
       setActive(image);
-      setCurrentImage(image);
     }
 
+    
   return (
     <div className="w-full bg-slate-100 flex flex-col items-center justify-center min-h-screen">
       <motion.div
@@ -23,7 +19,6 @@ function App() {
       animate={{ scale: 1 }}
       exit={{ scale: 0 }}
       transition={{ duration: 0.2 }}
-      
       className="w-80 rounded-2xl shadow-md bg-white flex flex-col gap- justify-start items-start p-2">
         <div className="relative   w-full p-5   overflow-hidden ">
           <img className=" w-full rounded-lg h-auto"
