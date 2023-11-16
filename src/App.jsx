@@ -1,4 +1,3 @@
-
 import './App.css'
 import { image, image2, image3, image4 } from "./assets/expors";
 import { useState } from 'react'
@@ -81,5 +80,4 @@ function App() {
     </div>
   );
 }
-
 export default App
