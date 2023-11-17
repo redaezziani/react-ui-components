@@ -3,14 +3,34 @@ import { image, image2, image3, image4 } from "./assets/expors";
 import { useState } from 'react'
 import {motion } from "framer-motion"
 
+
+
 function App() {
+  // lets make a put request to the jsonPLACEHOLDER API add  comments 
+
+  const addData = async () => {
+    const data = {
+      title: "reda tsdd 201",
+      body: "reda tsdd 201",
+      userId: 2,
+    }
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+    const json = await response.json()
+    console.log(json)
+  }
+
+
    const images = [image, image2, image3, image4];
    const [active, setActive] = useState(0);
    const changeActive = (image) => {
       setActive(image);
     }
-
-    
   return (
     <div className="w-full bg-slate-100 flex flex-col items-center justify-center min-h-screen">
       <motion.div
@@ -41,14 +61,24 @@ function App() {
           </div>
         </div>
         <div className="w-full grid-cols-5 p-5 grid gap-3 place-items-start">
-          <div className="rounded-md cursor-pointer col-span-1 w-full h-full aspect-square flex justify-center bg-slate-100 items-center ">
+          <div className="rounded-md relative cursor-pointer col-span-1 w-full h-full aspect-square flex justify-center bg-slate-100 items-center ">
+            <label
+            className='absolute  cursor-pointer top-0 left-0 w-full h-full z-30 flex justify-center items-center'
+            htmlFor="file"
+            >
+            </label>
+            <input
+            
+            id='file'
+            className='absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer hidden z-40'
+            type="file" />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-5 h-5 text-slate-600"
+              className="w-5 h-5 text-slate-600 z-10"
             >
               <path
                 strokeLinecap="round"
