@@ -8,6 +8,7 @@ import {motion } from "framer-motion"
 
 function App() {
 
+
   const [mode , setMode] = useState("light")
   const Links=[
     "Home",
@@ -71,7 +72,7 @@ function App() {
           </svg>
         )}
       </div>
-      <nav className="w-[30%] fixed top-10 flex justify-between items-center px-4 py-2 bg-[#28326940] rounded-full shadow-md border border-[#5564b98f] backdrop-blur-sm">
+      <nav className=" w-[60%] lg:w-[30%] fixed top-10 flex justify-between items-center px-4 py-2 bg-[#28326940] rounded-full shadow-md border border-[#5564b98f] backdrop-blur-sm">
         <div className="flex  relative justify-between items-center gap-2">
           <img
             src={profile}
