@@ -1,29 +1,30 @@
 import './App.css'
 import { image, image2, image3, image4 } from "./assets/expors";
+import profile from "./assets/profile.jpg";
 import { useState } from 'react'
 import {motion } from "framer-motion"
 
 
 
 function App() {
-  // lets make a put request to the jsonPLACEHOLDER API add  comments 
 
-  const addData = async () => {
-    const data = {
-      title: "reda tsdd 201",
-      body: "reda tsdd 201",
-      userId: 2,
+  const [mode , setMode] = useState("light")
+  const Links=[
+    "Home",
+    "About",
+    "Contact",
+    "Services",
+  ]
+
+  const toggleMode = () => {
+    if(mode === "light"){
+      setMode("dark")
     }
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    })
-    const json = await response.json()
-    console.log(json)
+    else{
+      setMode("light")
+    }
   }
+
 
 
    const images = [image, image2, image3, image4];
@@ -35,6 +36,57 @@ function App() {
     <div className="w-full bg-[#131627] flex flex-col items-center justify-center min-h-screen">
       <div className="w-[500px] h-[500px] bg-[#2958c6]/30 absolute -bottom-20 rounded-full right-32 filter blur-3xl"></div>
       <div className="w-[700px] h-[500px] bg-[#2958c6]/30 absolute -bottom-32 rounded-full left-20 filter blur-3xl"></div>
+      <div className="flex fixed top-16 right-40 ">
+        {mode === "light" ? (
+          <svg
+            onClick={toggleMode}
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-5 h-5 text-white cursor-pointer"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+            />
+          </svg>
+        ) : (
+          <svg
+            onClick={toggleMode}
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-5 h-5 text-white cursor-pointer"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+            />
+          </svg>
+        )}
+      </div>
+      <nav className="w-[30%] fixed top-10 flex justify-between items-center px-4 py-2 bg-[#28326940] rounded-full shadow-md border border-[#5564b98f] backdrop-blur-sm">
+        <div className="flex  relative justify-between items-center gap-2">
+          <img
+            src={profile}
+            className="w-10 h-10 cursor-pointer  rounded-full bg-[#5564b98f] border border-[#5564b98f]"
+          />
+        </div>
+        <div className="hidden md:flex gap-4 text-white">
+          {Links.map((link, index) => (
+            <h1 key={index}>{link}</h1>
+          ))}
+        </div>
+        <button className=" h-full py-2 rounded-full px-6 bg-[#5564b98f] text-white">
+          Login
+        </button>
+      </nav>
       <motion.div
         initial={{ scale: 0.5 }}
         animate={{ scale: 1 }}
