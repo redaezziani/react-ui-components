@@ -32,17 +32,22 @@ function App() {
       setActive(image);
     }
   return (
-    <div className="w-full bg-slate-100 flex flex-col items-center justify-center min-h-screen">
+    <div className="w-full bg-[#131627] flex flex-col items-center justify-center min-h-screen">
+      <div className="w-[500px] h-[500px] bg-[#2958c6]/30 absolute -bottom-20 rounded-full right-32 filter blur-3xl"></div>
+      <div className="w-[700px] h-[500px] bg-[#2958c6]/30 absolute -bottom-32 rounded-full left-20 filter blur-3xl"></div>
       <motion.div
-      initial={{ scale: .5 }}
-      animate={{ scale: 1 }}
-      exit={{ scale: 0 }}
-      transition={{ duration: 0.2 }}
-      className="w-80 rounded-2xl shadow-md bg-white flex flex-col gap- justify-start items-start p-2">
+        initial={{ scale: 0.5 }}
+        animate={{ scale: 1 }}
+        exit={{ scale: 0 }}
+        transition={{ duration: 0.2 }}
+        className="w-80 rounded-2xl shadow-md border border-[#5564b98f] backdrop-blur-sm bg-[#28326940] flex flex-col gap- justify-start items-start p-2"
+      >
         <div className="relative   w-full p-5   overflow-hidden ">
-          <img className=" w-full rounded-lg h-auto"
-          src={images[active]}
-          alt="" />
+          <img
+            className=" w-full rounded-lg h-auto"
+            src={images[active]}
+            alt=""
+          />
           <div className="w-8 cursor-pointer h-8 rounded-full flex justify-center items-center bg-white absolute top-2 right-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -63,15 +68,14 @@ function App() {
         <div className="w-full grid-cols-5 p-5 grid gap-3 place-items-start">
           <div className="rounded-md relative cursor-pointer col-span-1 w-full h-full aspect-square flex justify-center bg-slate-100 items-center ">
             <label
-            className='absolute  cursor-pointer top-0 left-0 w-full h-full z-30 flex justify-center items-center'
-            htmlFor="file"
-            >
-            </label>
+              className="absolute  cursor-pointer top-0 left-0 w-full h-full z-30 flex justify-center items-center"
+              htmlFor="file"
+            ></label>
             <input
-            
-            id='file'
-            className='absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer hidden z-40'
-            type="file" />
+              id="file"
+              className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer hidden z-40"
+              type="file"
+            />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -96,7 +100,9 @@ function App() {
             <div
               key={index}
               onClick={() => changeActive(index)}
-              className={`rounded-md col-span-1 cursor-pointer  w-full h-full aspect-square flex justify-center bg-slate-100 items-center ${ active === index ? 'border-2 border-blue-500' : ''}`}
+              className={`rounded-md col-span-1 cursor-pointer  w-full h-full aspect-square flex justify-center bg-slate-100 items-center ${
+                active === index ? "border-2 border-[#5564b98f]" : ""
+              }`}
             >
               <img
                 className="w-full rounded-md  h-full object-cover"
